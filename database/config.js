@@ -4,6 +4,7 @@ const mongoose  = require( 'mongoose' );
 const dbConnection = async() => {
 
     try{
+        await mongoose.set ('strictQuery', false);
 
         await mongoose.connect(process.env.MONGODB_CNN, {
             useNewUrlParser: true,
@@ -14,7 +15,7 @@ const dbConnection = async() => {
             
         })
 
-        await mongoose.set ('strictQuery', false);
+        
 
         console.log('base de datos online')
 

@@ -33,7 +33,7 @@ const usuarioSchema = Schema({
 
     estado: {
         type: Boolean,
-        //reuired: [true, 'El estado es requerido'],
+        //  reuired: [true, 'El estado es requerido'],
         default: true
                 
     },
@@ -48,8 +48,9 @@ const usuarioSchema = Schema({
 
 usuarioSchema.methods.toJSON = function() {
 
-    const{ __v, password, ...usuario} = this.toObject();
-    return usuario
+    const{ __v, password, _id, ...usuario} = this.toObject();
+    usuario.uid = _id;
+    return usuario;
 }
 
 module.exports = model('Usuario', usuarioSchema);
